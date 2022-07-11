@@ -13,6 +13,6 @@ const countriesSchema = new Schema({
     },
 );
 
-const Countries = mongoose.model("Countries", votesSchema);
+const Countries = mongoose.model("Countries", countriesSchema);
 
 module.exports = Countries;
