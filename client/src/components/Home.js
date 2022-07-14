@@ -3,4 +3,13 @@ import React from "react"
 
 export default function Home () {
 
+    return (
+        <div>
+            <div className="intro-container">
+                <h4 className="subtitle">Welcome to a catalogue of my travels and whereabouts</h4>
+                <p className="subtitle-text">To learn more about me and this project click here</p>
+            </div>
+
+        </div>
+    )
 }

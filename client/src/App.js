@@ -9,9 +9,15 @@ function App() {
   return (
     <div>
       <Navbar />
-      
+      <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/vote" element={<CastVote />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+// /* <Route path="/votes" element={<CastVote />} /> */
