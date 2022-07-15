@@ -35,4 +35,6 @@ h1 {
   border: 3px solid #ffff;
   border-radius: 20px;
   margin: .75em;
+  overflow: hidden;
 }
+

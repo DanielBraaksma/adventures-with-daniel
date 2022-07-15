@@ -28,7 +28,7 @@ export default function WorldMap (props) {
 
     return (
         <div className="map">
-        <Chart chartType="GeoChart" max-width="100%" height="400px" data={data} options={options} borderRadius="20px"/>
+        <Chart chartType="GeoChart" max-width="100%" height="400px" data={data} options={options} />
       </div>
     )
 }
