@@ -36,5 +36,5 @@ h1 {
   border-radius: 20px;
   margin: .75em;
   overflow: hidden;
+  max-width: 900px;
 }
-
