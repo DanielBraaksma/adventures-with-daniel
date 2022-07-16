@@ -1,34 +1,79 @@
-import React from "react";
-import Chart from "react-google-charts";
+import React from 'react';
+import svgMap from 'svgmap'
+import 'svgmap/dist/svgMap.min.css';
+
 
 export default function WorldMap (props) {
-    const data = [
-        ["Country", "Date Visited"],
-        ["Kenya", 500],
-        ["United States", 500],
-        ["Uganda", 500],
-        ["Vietnam", 500],
-        ["Thailand", 500],
-        ["Laos", 500],
-        ["Cambodia", 500],
-        ["Malaysia", 500],
-        ["Philippines", 500],
-        ["Philippines", 500],
-        ["Indonesia", 500],
-        ["Tanzania", 500],
-        ["Netherlands", 500],
-        ["South-Sudan", 500],
-        ["Germany", 500]
-      ];
 
-    const options = {
-        backgroundColor: "lightblue",
-        legend: "none",
+  new svgMap({
+    targetElementID: 'svgMap',
+    colorMin: '#85ffbd',
+    colorMax: '#85ffbd',
+    noDataText: "Hope to visit someday!",
+    data: {
+      data: {
+        yearVisited: {
+          name: 'year visited',
+          format: '',
+          thresholdMax: 5000,
+          thresholdMin: 0
+        },
+        lived: {
+          name: 'lived',
+          format: ''
+        },
+        stayLength: {
+          name: "stay length",
+          format: ''
+        }
+      },
+      applyData: 'yearVisited',
+      values: {
+        AF: {yearVisited: 1997, lived: "true", stayLength: "1 week"},
+        BR: {yearVisited: 2010, lived: "true", stayLength: "5 weeks"},
+        AU: {yearVisited: 2022, lived: "false", stayLength: "currently living here"}
+        // ...
+      },
     }
+  });
+
+
+
+
+
+  // new svgMap({
+  //   targetElementID: 'svgMap',
+  //   colorMin: '#85ffbd',
+  //   colorMax: '#85ffbd',
+  //   noDataText: "Hope to visit someday!",
+  //   data: {
+  //     data: {
+  //       yearVisited: {
+  //         name: 'year visited',
+  //         format: '',
+  //         thresholdMax: 5000,
+  //         thresholdMin: 0
+  //       },
+  //       lived: {
+  //         name: 'lived',
+  //         format: ''
+  //       },
+  //       stayLength: {
+  //         name: "stay length",
+  //         format: ''
+  //       }
+  //     },
+  //     applyData: 'yearVisited',
+  //     values: {
+  //       AF: {yearVisited: 1997, lived: "true", stayLength: "1 week"},
+  //       BR: {yearVisited: 2010, lived: "true", stayLength: "5 weeks"},
+  //       AU: {yearVisited: 2022, lived: "false", stayLength: "currently living here"}
+  //       // ...
+  //     },
+  //   }
+  // });
 
     return (
-        <div className="map">
-        <Chart chartType="GeoChart" max-width="100%" height="400px" data={data} options={options} />
-      </div>
+      <div id="svgMap">test</div>
     )
 }

@@ -11,7 +11,6 @@ function App() {
       <Navbar />
       <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/vote" element={<CastVote />} />
       </Routes>
     </div>
   );
