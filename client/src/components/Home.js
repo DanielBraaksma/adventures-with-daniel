@@ -20,7 +20,7 @@ export default function Home() {
         </p>
       </div>
       <WorldMap key={mapkey} />
-      <div></div>
+      {/* <div>listview of trips</div> */}
       <div className="top-countries-poll">
         <h5 className="poll-title">Poll</h5>
         <p>Visitor Recommendations<br></br>
