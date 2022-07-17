@@ -32,8 +32,8 @@ export default function BarChart() {
     <div className="barchart">
         <Chart
         chartType="BarChart"
-        width="75%"
-        height="300px"
+        width="100%"
+        height="100%"
         data={data}
         options={options}
         />
