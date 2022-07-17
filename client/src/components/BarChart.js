@@ -29,12 +29,14 @@ export const options = {
 
 export default function BarChart() {
   return (
-    <Chart
-      chartType="BarChart"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    <div className="barchart">
+        <Chart
+        chartType="BarChart"
+        width="75%"
+        height="300px"
+        data={data}
+        options={options}
+        />
+    </div>
   );
 }

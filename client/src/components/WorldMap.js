@@ -20,8 +20,8 @@ class WorldMap extends Component {
 
       var mySvgMap = new svgMap({
         targetElementID: 'svgMap',
-        colorMin: '#603a8e',
-        colorMax: '#603a8e',
+        colorMin: '#85ffbd',
+        colorMax: '#85ffbd',
         noDataText: "Hope to visit someday!",
         data: {
           data: {
