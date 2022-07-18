@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import CastVote from "./components/CastVote";
+import Footer from "./components/Footer";
 
 function App() {
   React.useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/castVote" element={<CastVote />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
