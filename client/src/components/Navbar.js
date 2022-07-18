@@ -1,11 +1,13 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import SideBar from "./Sidebar";
 
-export default function Navbar () {
+export default function Navbar() {
 
-    return (
-        <nav className="navbar">
-            <h1>Adventures with Daniel</h1>
-        </nav>
-    )
+  return (
+    <nav id="navbar">
+      <h1>Adventures with Daniel</h1>
+      <SideBar  />
+
+    </nav>
+  );
 }

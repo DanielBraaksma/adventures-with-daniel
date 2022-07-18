@@ -17,7 +17,7 @@ export const data = [
 export const options = {
   title: "Top 10 recommendations from site visitors",
   chartArea: { width: "50%" },
-  colors: ["#ebcbf7", "#ffab91"],
+  colors: ["#7AB195", "#ffab91"],
   hAxis: {
     title: "Votes",
     minValue: 0,

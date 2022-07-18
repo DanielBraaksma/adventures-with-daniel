@@ -16,6 +16,7 @@ html {
 } */
 
 body {
+  box-sizing: border-box;
   margin: 0;
   font-family: 'Oxygen', sans-serif;
   /* letter-spacing: .1rem; */
@@ -30,7 +31,7 @@ body {
   padding: 1em;
 }
 
-.navbar {
+#navbar {
   margin: 0;
   margin-bottom: 4em;
   padding: 2em;
@@ -40,6 +41,61 @@ body {
   display: flex;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 
+}
+
+/****************Hamburger Menu********************************/
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+.bm-burger-bars {
+  background: #000;
+}
+
+/* .bm-menu-wrap {
+  visibility: hidden;
+}
+
+.bm-menu-wrap.open {
+  visibility: visible;
+} */
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+.bm-menu-wrap {
+  top: 0;
+  right: 0 !important;
+
+}
+
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  overflow: hidden !important;
+
+}
+
+.bm-item-list {
+  padding: 0.8em;
+  height: 500px;
+
+}
+
+.bm-item {
+  display: block;
+  color: #bdc3c7;
 }
 
 h1 {
@@ -75,12 +131,15 @@ h1 {
   text-align: center;
 }
 
-#reactgooglegraph-1 {
+/* #reactgooglegraph-1 {
   max-width: 100%;
 
-}
+} */
 
 .barchart {
   border-radius: 20px;
   overflow: hidden;
+  max-width: 900px;
+  margin: 1em auto;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
