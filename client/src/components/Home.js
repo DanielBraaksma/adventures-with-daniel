@@ -5,8 +5,6 @@ import BarChart from "./BarChart";
 // https://codesandbox.io/s/ll9r7wxkmq?file=/src/index.js:0-555 great resource for making map
 
 export default function Home() {
-  const [mapkey, setMapKey] = React.useState(0);
-
 
 
   return (
@@ -19,9 +17,9 @@ export default function Home() {
           To learn more about me and this project click <Link to="/about">here</Link>
         </p>
       </div>
-      <WorldMap key={mapkey} />
+      <WorldMap />
       {/* <div>listview of trips</div> */}
-      <div className="top-countries-poll">
+      <div className="poll-label">
         <h5 className="poll-title">Poll</h5>
         <p>Visitor Recommendations<br></br>
         Where would you recommend travelling to?</p>

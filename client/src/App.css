@@ -6,7 +6,6 @@
 html {
   margin: 0px;
   min-height: 100%;
-
 }
 
 /* body {
@@ -18,12 +17,12 @@ html {
 body {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Oxygen', sans-serif;
+  font-family: "Oxygen", sans-serif;
   /* letter-spacing: .1rem; */
   /* height: 100%; */
   /* background: radial-gradient(circle at top right, #ebcbf7 10%, #fcf3ef, #fdfcf9 40%); */
-  background-color: #85FFBD;
-  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
   background-repeat: no-repeat;
 }
 
@@ -31,7 +30,7 @@ body {
   padding: 1em;
 }
 
-#navbar {
+header {
   margin: 0;
   margin-bottom: 4em;
   padding: 2em;
@@ -39,68 +38,60 @@ body {
   height: 100px;
   background-color: #ffff;
   display: flex;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
-
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 /****************Hamburger Menu********************************/
 
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
+nav a {
+  margin: 0 2rem;
+  text-decoration: none;
 }
 
-.bm-burger-bars {
-  background: #000;
+nav a:hover {
+  color: yellow;
 }
 
-/* .bm-menu-wrap {
+header .nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #85ffbd;
   visibility: hidden;
+  opacity: 0;
 }
 
-.bm-menu-wrap.open {
-  visibility: visible;
-} */
+@media only screen and (max-width: 1024px) {
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
 
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
+  header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: green;
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
 
-.bm-cross {
-  background: #bdc3c7;
-}
-.bm-menu-wrap {
-  top: 0;
-  right: 0 !important;
-
-}
-
-.bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-  overflow: hidden !important;
-
-}
-
-.bm-item-list {
-  padding: 0.8em;
-  height: 500px;
-
-}
-
-.bm-item {
-  display: block;
-  color: #bdc3c7;
+  header .responsive_nav {
+    transform: none;
+  }
 }
 
 h1 {
   margin: 0;
-  letter-spacing: .5rem;
+  letter-spacing: 0.5rem;
   font-weight: 700;
   font-size: 1.5rem;
 }
@@ -114,7 +105,7 @@ h1 {
   /* border: 3px solid #efaff8; */
   text-align: center;
   border-radius: 20px;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .map {
@@ -124,11 +115,19 @@ h1 {
   margin-bottom: 4em;
   overflow: hidden;
   max-width: 900px;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-.top-countries-poll {
+.poll-label {
   text-align: center;
+  /* background-color: #ffff; */
+  color: rgb(73, 72, 72);
+  margin: 1em auto;
+  margin-bottom: 4em;
+  width: 300px;
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* #reactgooglegraph-1 {
@@ -141,5 +140,5 @@ h1 {
   overflow: hidden;
   max-width: 900px;
   margin: 1em auto;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
