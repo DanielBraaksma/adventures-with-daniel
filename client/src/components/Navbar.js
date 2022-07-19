@@ -15,16 +15,16 @@ export default function Navbar() {
       <h1>Adventures with Daniel</h1>
       <nav ref={navRef}>
         <Link to="/">
-          <h2>Home</h2>
+          <h4>Home</h4>
         </Link>
         <Link to="/about">
-          <h2>About</h2>
+          <h4>About</h4>
         </Link>
         <Link to="/photos">
-          <h2>Photos</h2>
+          <h4>Photos</h4>
         </Link>
         <Link to="/articles">
-          <h2>Blog</h2>
+          <h4>Blog</h4>
         </Link>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />

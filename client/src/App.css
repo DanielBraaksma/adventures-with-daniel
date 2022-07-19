@@ -129,6 +129,15 @@ header .nav-btn {
   header {
     align-items: baseline;
   }
+
+  nav a {
+    color:#494850
+  }
+
+  nav a:hover {
+    color: #78cc78;
+    background-color: transparent;
+  }
 }
 
 h1 {
