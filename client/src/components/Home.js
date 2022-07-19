@@ -18,9 +18,32 @@ export default function Home() {
     });
   };
 
-  function handleFormSubmit (event){
+  async function handleFormSubmit (event){
     event.preventDefault()
-  }
+    console.log(vote.countryVote)
+    fetch("http://localhost:5000/votes/add", {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify({
+            "countryName" : vote.countryVote,
+            "votes" : 1
+          }) // body data type must match "Content-Type" header
+      })
+      .then((response =>response.json()))
+      .then((data) =>console.log(data))
+      .catch(error => console.error("Error:", error))
+    }
+
+
+
 
   return (
     <div>
@@ -43,11 +66,11 @@ export default function Home() {
         </p>
         <form onSubmit={handleFormSubmit}>
           <select
-            id="country-vote"
+            id="countryVote"
             value={vote}
             onChange={handleFormChange}
-            name="country-vote"
-          >
+            name="countryVote"
+          > <option value="select country">select country</option>
             {countriesList.map((name) => (
               <option value={name}>{name}</option>
             ))}
@@ -59,3 +82,6 @@ export default function Home() {
     </div>
   );
 }
+
+//Add a funcitonality that gives feedback to user based on what they voted. ex:
+// thanks for sharing, I agree.. or Thanks for sharing, i'd love to check it out.
