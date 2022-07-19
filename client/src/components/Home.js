@@ -11,13 +11,16 @@ export default function Home() {
   const countriesList = iso3311a2.getCountries();
   console.log(countriesList);
 
-  const handleChange = (event) => {
+  function handleFormChange (event) {
     const { name, value } = event.target;
-
     setVote({
       [name]: value,
     });
   };
+
+  function handleFormSubmit (event){
+    event.preventDefault()
+  }
 
   return (
     <div>
@@ -38,17 +41,18 @@ export default function Home() {
           Visitor Recommendations<br></br>
           Where would you recommend travelling to?
         </p>
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <select
             id="country-vote"
             value={vote}
-            onChange={handleChange}
+            onChange={handleFormChange}
             name="country-vote"
           >
             {countriesList.map((name) => (
               <option value={name}>{name}</option>
             ))}
           </select>
+          <input type="submit" value="Vote"/>
         </form>
       </div>
       <BarChart />
