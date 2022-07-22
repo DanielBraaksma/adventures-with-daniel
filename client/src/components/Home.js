@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEfect, useEffect } from "react";
 import { Link } from "react-router-dom";
 import WorldMap from "./WorldMap";
 import BarChart from "./BarChart";
@@ -6,10 +6,23 @@ import iso3311a2 from "iso-3166-1-alpha-2";
 // https://codesandbox.io/s/ll9r7wxkmq?file=/src/index.js:0-555 great resource for making map
 
 export default function Home() {
-  const [vote, setVote] = useState("");
+  const [vote, setVote] = useState({countryVote : "select a country"});
+  const [voteData, setVoteData] = useState([]);
 
   const countriesList = iso3311a2.getCountries();
-  console.log(countriesList);
+  // console.log(countriesList);
+
+  useEffect(() =>{
+    getVotesData()
+  }, [])
+
+
+  function getVotesData () {
+
+      fetch("http://localhost:5000/votes")
+          .then(res => res.json())
+          .then(data => setVoteData(data))
+  }
 
   function handleFormChange (event) {
     const { name, value } = event.target;
@@ -18,10 +31,23 @@ export default function Home() {
     });
   };
 
-  async function handleFormSubmit (event){
+  function handleFormSubmit (event){
     event.preventDefault()
+
     console.log(vote.countryVote)
-    fetch("http://localhost:5000/votes/add", {
+
+    let endpoint = "add"
+    let method = "POST"
+    let votes = 1
+
+
+    for (let vote of voteData) {
+        console.log(vote)
+    }
+
+
+    fetch (`http://localhost:5000/votes/add`, {
+
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -40,7 +66,9 @@ export default function Home() {
       .then((response =>response.json()))
       .then((data) =>console.log(data))
       .catch(error => console.error("Error:", error))
+      getVotesData();
     }
+
 
 
 
@@ -67,10 +95,11 @@ export default function Home() {
         <form onSubmit={handleFormSubmit}>
           <select
             id="countryVote"
-            value={vote}
+            value={vote.countryVote}
             onChange={handleFormChange}
             name="countryVote"
-          > <option value="select country">select country</option>
+          >
+            <option value={vote.countryVote}>{vote.countryVote}</option>
             {countriesList.map((name) => (
               <option value={name}>{name}</option>
             ))}
