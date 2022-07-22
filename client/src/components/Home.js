@@ -10,18 +10,19 @@ export default function Home() {
   const [voteData, setVoteData] = useState([]);
 
   const countriesList = iso3311a2.getCountries();
-  console.log(countriesList);
+  // console.log(countriesList);
 
   useEffect(() =>{
-
-        fetch("http://localhost:5000/votes")
-        .then((response) =>response.json())
-        .then((data) =>console.log(data))
-        .then((data) =>setVoteData(data))
-        .catch((error) => console.error("Error:", error))
+    getVotesData()
   }, [])
 
 
+  function getVotesData () {
+
+      fetch("http://localhost:5000/votes")
+          .then(res => res.json())
+          .then(data => setVoteData(data))
+  }
 
   function handleFormChange (event) {
     const { name, value } = event.target;
@@ -40,9 +41,9 @@ export default function Home() {
     let votes = 1
 
 
-    // for (let vote of voteData) {
-    //     console.log(v)
-    // }
+    for (let vote of voteData) {
+        console.log(vote)
+    }
 
 
     fetch (`http://localhost:5000/votes/add`, {
@@ -65,7 +66,7 @@ export default function Home() {
       .then((response =>response.json()))
       .then((data) =>console.log(data))
       .catch(error => console.error("Error:", error))
-    //   getVotesData();
+      getVotesData();
     }
 
 

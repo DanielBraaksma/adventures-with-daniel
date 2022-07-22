@@ -13,9 +13,9 @@ class WorldMap extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
+    // console.log(this.state)
 
-    console.log("new render of component");
+    // console.log("new render of component");
 
 
       var mySvgMap = new svgMap({
@@ -88,7 +88,7 @@ class WorldMap extends Component {
 // }
 
   render() {
-    console.log("render")
+    // console.log("render")
     return (
         <div id='svgMap' className='map'></div>
     );
