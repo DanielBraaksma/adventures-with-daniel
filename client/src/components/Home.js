@@ -16,9 +16,9 @@ export default function Home() {
 
         fetch("http://localhost:5000/votes")
         .then((response) =>response.json())
-          .then((data) =>console.log(data))
-          .then((data) =>setVoteData(data))
-          .catch((error) => console.error("Error:", error))
+        .then((data) =>console.log(data))
+        .then((data) =>setVoteData(data))
+        .catch((error) => console.error("Error:", error))
   }, [])
 
 
