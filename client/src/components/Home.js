@@ -21,7 +21,6 @@ export default function Home() {
       fetch("http://localhost:5000/votes")
           .then(res => res.json())
           .then(data => setVoteData(data))
-          // .then(console.log(voteData))
         }
 
         function handleFormChange (event) {
@@ -35,7 +34,7 @@ export default function Home() {
 
   function handleFormSubmit (event){
     event.preventDefault()
-    getVotesData(); // make sure we have latest infor from mongodb
+    getVotesData(); // make sure we have latest info from mongodb
 
     let endpoint = "add"; // if country is not voted already in db use these defaults to post a new one
     let votes = 1;
@@ -71,7 +70,6 @@ export default function Home() {
       .then((data) =>console.log(data))
       .then(getVotesData)
       .catch(error => console.error("Error:", error))
-
       setVote({countryVote : "select a country"})
       }
     }
@@ -114,7 +112,7 @@ export default function Home() {
           <input type="submit" value="Vote"/>
         </form>
       </div>
-      <BarChart />
+      <BarChart voteData={voteData}/>
     </div>
   );
 }

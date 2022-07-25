@@ -1,40 +1,39 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 
-export const data = [
-  ["Country", "votes"],
-  ["Brazil", 81],
-  ["Uganda", 37],
-  ["France", 26],
-  ["Italy", 20],
-  ["Mongolia", 15],
-  ["South Africa", 15],
-  ["Australia", 15],
-  ["USA", 15],
-  ["Belize", 15],
-];
 
-export const options = {
-  title: "Top 10 recommendations from site visitors",
-  chartArea: { width: "50%" },
-  colors: ["#7AB195", "#ffab91"],
-  hAxis: {
-    title: "Votes",
-    minValue: 0,
-  },
-  vAxis: {
-    title: "Country",
-  },
-};
+export default function BarChart({voteData}) {
 
-export default function BarChart() {
+  // reformat the voteData into an array of arrays for the chart data
+  const voteDataReformat = voteData.map(v => {
+    return [v.countryName, parseInt(v.votes)]
+  })
+
+  // Need to include the labels for the chart to work, spread the other data in.
+  const data = [["Country", "votes"], ...voteDataReformat]
+
+
+  const options = {
+    title: "Top 10 recommendations from site visitors",
+    chartArea: { width: "50%" },
+    isStacked: true,
+    colors: ["#7AB195", "#ffab91"],
+    hAxis: {
+      title: "Votes",
+      minValue: 0,
+    },
+    vAxis: {
+      title: "Country",
+    },
+  };
+
   return (
     <div className="barchart">
         <Chart
         chartType="BarChart"
         width="100%"
-        height="100%"
-        data={data}
+        height="400px"
+        data={data.length > 10 ? data.slice(0, 11) : data}
         options={options}
         />
     </div>
