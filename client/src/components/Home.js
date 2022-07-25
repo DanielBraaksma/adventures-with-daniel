@@ -49,7 +49,7 @@ export default function Home() {
         }
     }
 
-
+    if (vote.countryVote !== "select a country") {
     fetch (`http://localhost:5000/votes/${endpoint}`, {
 
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -73,6 +73,7 @@ export default function Home() {
       .catch(error => console.error("Error:", error))
 
       setVote({countryVote : "select a country"})
+      }
     }
 
 
