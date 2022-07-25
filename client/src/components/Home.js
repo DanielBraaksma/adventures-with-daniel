@@ -10,7 +10,6 @@ export default function Home() {
   const [voteData, setVoteData] = useState([]);
 
   const countriesList = iso3311a2.getCountries();
-  // console.log(countriesList);
 
   useEffect(() =>{
     getVotesData()
@@ -22,31 +21,36 @@ export default function Home() {
       fetch("http://localhost:5000/votes")
           .then(res => res.json())
           .then(data => setVoteData(data))
-  }
+          // .then(console.log(voteData))
+        }
 
-  function handleFormChange (event) {
-    const { name, value } = event.target;
-    setVote({
-      [name]: value,
-    });
-  };
+        function handleFormChange (event) {
+          const { name, value } = event.target;
+          setVote({
+            [name]: value,
+          });
+        };
+
+        (console.log(voteData))
 
   function handleFormSubmit (event){
     event.preventDefault()
+    getVotesData();
 
-    console.log(vote.countryVote)
+    let endpoint = "add";
+    let votes = 1;
 
-    let endpoint = "add"
-    let method = "POST"
-    let votes = 1
-
-
-    for (let vote of voteData) {
-        console.log(vote)
+    for (let v of voteData) {
+        if (v.countryName === vote.countryVote){
+          console.log("found in storage")
+          endpoint = `update/${v._id}`
+          votes = parseInt(v.votes) + 1;
+          console.log(votes);
+        }
     }
 
 
-    fetch (`http://localhost:5000/votes/add`, {
+    fetch (`http://localhost:5000/votes/${endpoint}`, {
 
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -60,13 +64,15 @@ export default function Home() {
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify({
             "countryName" : vote.countryVote,
-            "votes" : 1
+            "votes" : votes
           }) // body data type must match "Content-Type" header
       })
       .then((response =>response.json()))
       .then((data) =>console.log(data))
+      .then(getVotesData)
       .catch(error => console.error("Error:", error))
-      getVotesData();
+
+      setVote({countryVote : "select a country"})
     }
 
 
