@@ -35,12 +35,12 @@ export default function Home() {
 
   function handleFormSubmit (event){
     event.preventDefault()
-    getVotesData();
+    getVotesData(); // make sure we have latest infor from mongodb
 
-    let endpoint = "add";
+    let endpoint = "add"; // if country is not voted already in db use these defaults to post a new one
     let votes = 1;
 
-    for (let v of voteData) {
+    for (let v of voteData) { //if country has votes update by 1 on form submit
         if (v.countryName === vote.countryVote){
           console.log("found in storage")
           endpoint = `update/${v._id}`
@@ -49,7 +49,7 @@ export default function Home() {
         }
     }
 
-    if (vote.countryVote !== "select a country") {
+    if (vote.countryVote !== "select a country") { // only submit if user changes default option
     fetch (`http://localhost:5000/votes/${endpoint}`, {
 
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
