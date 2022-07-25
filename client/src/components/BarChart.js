@@ -10,8 +10,14 @@ export default function BarChart({voteData}) {
   })
 
   // Need to include the labels for the chart to work, spread the other data in.
-  const data = [["Country", "votes"], ...voteDataReformat]
+  const allData = [["Country", "votes"], ...voteDataReformat]
 
+  function findTop10 (){
+    // sort all data by vote count
+    let sortedArr = allData.sort((a,b)=> b[1] - a[1])
+    // slice the sorted Array to only include top 10
+    return sortedArr.slice(0, 11)
+  }
 
   const options = {
     title: "Top 10 recommendations from site visitors",
@@ -33,7 +39,7 @@ export default function BarChart({voteData}) {
         chartType="BarChart"
         width="100%"
         height="400px"
-        data={data.length > 10 ? data.slice(0, 11) : data}
+        data={allData.length < 11 ? allData : findTop10()}
         options={options}
         />
     </div>
