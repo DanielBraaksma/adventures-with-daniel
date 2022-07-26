@@ -4,94 +4,90 @@ import "svgmap/dist/svgMap.min.css";
 
 //functional component not working with svgmap//
 class WorldMap extends Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    dimensions: {
-      height: window.innerHeight,
-      width: window.innerWidth
-    }
+    this.state = {
+    };
   }
 
   componentDidMount() {
-    // console.log(this.state)
+    let travelDataObj = {}
+
+      fetch("http://localhost:5000/countries/")
+            .then(res => res.json())
+            .then(data => this.setState({"countryArr" : data}, createMap))
+
+    // let travelDataObj = {}
+    // this.props.countryArr.forEach(country=>{
+    //   travelDataObj[country.countryName] = {
+    //     ["yearVisited"] : country.yearVisited,
+    //     ["lived"] : country.lived,
+    //     ["stayLength"] : country.stayLength
+    //   }
+    // })
 
     // console.log("new render of component");
+    function createMap () {
 
-
-      var mySvgMap = new svgMap({
-        targetElementID: 'svgMap',
-        colorMin: '#3D9668',
-        colorMax: '#3D9668',
-        noDataText: "Hope to visit someday!",
-        data: {
-          data: {
-            yearVisited: {
-              name: 'year visited',
-              format: '',
-              thresholdMax: 5000,
-              thresholdMin: 0
-            },
-            lived: {
-              name: 'lived',
-              format: ''
-            },
-            stayLength: {
-              name: "stay length",
-              format: ''
-            }
-          },
-          applyData: 'yearVisited',
-          values: {
-            GB: {yearVisited: "birthplace", lived: "true", stayLength: "1 week"},
-            BR: {yearVisited: 2010, lived: "true", stayLength: "5 weeks"},
-            AU: {yearVisited: 2022, lived: "false", stayLength: "currently living here"}
-            // ...
-          },
+      let travelDataObj = {}
+      this.state.countryArr.forEach(country=>{
+        travelDataObj[country.countryName] = {
+          ["yearVisited"] : country.yearVisited,
+          ["lived"] : country.lived,
+          ["stayLength"] : country.stayLength
         }
-      });
-      this.svgMap = mySvgMap;
+      })
 
-      window.addEventListener("resize", ()=>window.location.reload());
+    console.log(travelDataObj)
+
+    var mySvgMap = new svgMap({
+      targetElementID: "svgMap",
+      colorMin: "#3D9668",
+      colorMax: "#3D9668",
+      noDataText: "Hope to visit someday!",
+      data: {
+        data: {
+          yearVisited: {
+            name: "year visited",
+            format: "",
+            thresholdMax: 5000,
+            thresholdMin: 0,
+          },
+          lived: {
+            name: "lived",
+            format: "",
+          },
+          stayLength: {
+            name: "stay length",
+            format: "",
+          },
+        },
+        applyData: "yearVisited",
+        values: travelDataObj,
+      },
+    });
+    this.svgMap = mySvgMap;
+    console.log(this.state)
+  }
+
+    console.log("render")
+    // console.log(this.state)
+
+    window.addEventListener("resize", () => window.location.reload());
     // window.location.reload()
     return () => {
-            window.removeEventListener("resize", ()=>window.location.reload());
-          };
-
-    }
-
-    //   setDimensions({
-    //     height: window.innerHeight,
-    //     width: window.innerWidth,
-    //   });
-    // }
-
-//     window.addEventListener("resize", this.handleResize);
-
-//     return () => {
-//       window.removeEventListener("resize", this.handleResize);
-//     };
-
-//   }
+      window.removeEventListener("resize", () => window.location.reload());
+    };
+  }
 
 
-//   handleResize = () => {
-//     console.log("resized");
-//     console.log(this.state)
-//     this.setState(prevState => {
-//       return {
-//           ...prevState, dimensions: {
-//             height: window.innerHeight,
-//             width: window.innerWidth
-//           }
-//       }
-//   })
-// }
 
   render() {
-    // console.log("render")
-    return (
-        <div id='svgMap' className='map'></div>
-    );
+
+    // console.log("render1")
+    // console.log(this.state)
+    return <div id="svgMap" className="map"></div>;
   }
 }
 

@@ -8,7 +8,7 @@ import iso3311a2 from "iso-3166-1-alpha-2";
 export default function Home() {
   const [vote, setVote] = useState({countryVote : "select a country"});
   const [voteData, setVoteData] = useState([]);
-
+  const [countriesTraveled, setCountriesTraveled] = useState([])
 
   const countriesList = iso3311a2.getCountries();
 
@@ -17,7 +17,11 @@ export default function Home() {
     // getCountriesTraveledData()
   }, [])
 
-
+  // function getCountriesTraveledData () {
+  //   fetch("http://localhost:5000/countries/")
+  //         .then(res => res.json())
+  //         .then(data => setCountriesTraveled(data))
+  //       }
 
   function getVotesData () {
 
@@ -33,7 +37,7 @@ export default function Home() {
           });
         };
 
-        (console.log(voteData))
+        // (console.log(voteData))
 
   function handleFormSubmit (event){
     event.preventDefault()
