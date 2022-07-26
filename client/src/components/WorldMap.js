@@ -42,7 +42,7 @@ class WorldMap extends Component {
           },
           applyData: 'yearVisited',
           values: {
-            AF: {yearVisited: 1997, lived: "true", stayLength: "1 week"},
+            GB: {yearVisited: "birthplace", lived: "true", stayLength: "1 week"},
             BR: {yearVisited: 2010, lived: "true", stayLength: "5 weeks"},
             AU: {yearVisited: 2022, lived: "false", stayLength: "currently living here"}
             // ...

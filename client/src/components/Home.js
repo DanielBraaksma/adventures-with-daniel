@@ -9,11 +9,14 @@ export default function Home() {
   const [vote, setVote] = useState({countryVote : "select a country"});
   const [voteData, setVoteData] = useState([]);
 
+
   const countriesList = iso3311a2.getCountries();
 
   useEffect(() =>{
     getVotesData()
+    // getCountriesTraveledData()
   }, [])
+
 
 
   function getVotesData () {
