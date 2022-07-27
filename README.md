@@ -6,26 +6,26 @@ I love travelling and interacting with people from different countries and cultu
 
 ## Required Features included in this project:
 
-1 * Create a form and save the values (on click of Submit button) to an external file
+1 Create a form and save the values (on click of Submit button) to an external file
 You must show us or document where that information is being stored so we can confirm that it’s being saved/persisted
 
-    * User submits a vote for a country recommendation from dropdown page. This is saved to MongoDB and then used to update the bar chart data
+* User submits a vote for a country recommendation from dropdown page. This is saved to MongoDB and then used to update the bar chart data
 
 
 
-2 * Visualize data in a graph, chart, or other visual representation of data
+2 Visualize data in a graph, chart, or other visual representation of data
 
-    * Vote data is displayed in bar chart and countries visited is displayed in map
+* Vote data is displayed in bar chart and countries visited is displayed in map
 
 (additional)
 
-3 * JavaScript framework such as React, Angular, Vue, etc
+3 JavaScript framework such as React, Angular, Vue, etc
 
-    * Application was built using React
+* Application was built using React
 
-4 * Create a web server with at least one route and connect to it from your application using ExpressJS
+4 Create a web server with at least one route and connect to it from your application using ExpressJS
 
-    * Server built using Node and Express. There are several routes connected to the application to add / edit voting data and countries traveled data
+* Server built using Node and Express. There are several routes connected to the application to add / edit voting data and countries traveled data
 
 
 
