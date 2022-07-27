@@ -25,7 +25,7 @@ export default function Home() {
 
   function getVotesData () {
 
-      fetch("http://localhost:5000/votes")
+      fetch("https://adventures-with-daniel.herokuapp.com/votes")
           .then(res => res.json())
           .then(data => setVoteData(data))
         }
