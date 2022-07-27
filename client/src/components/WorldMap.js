@@ -14,7 +14,7 @@ class WorldMap extends Component {
   componentDidMount() {
     let travelDataObj = {}
 
-      fetch("http://localhost:5000/countries/")
+      fetch("https://adventures-with-daniel.herokuapp.com/countries/")
             .then(res => res.json())
             .then(data => this.setState({"countryArr" : data}, createMap))
 

@@ -56,7 +56,7 @@ export default function Home() {
     }
 
     if (vote.countryVote !== "select a country") { // only submit if user changes default option
-    fetch (`http://localhost:5000/votes/${endpoint}`, {
+    fetch (`https://adventures-with-daniel.herokuapp.com/votes/${endpoint}`, {
 
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
