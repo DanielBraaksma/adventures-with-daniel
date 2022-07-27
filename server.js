@@ -23,10 +23,6 @@ const votesRouter = require('./routes/votes');
 app.use('/countries', countriesRouter);
 app.use('/votes', votesRouter);
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
-
 // server static assets if in production
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'))  // set static folder
@@ -36,3 +32,7 @@ if(process.env.NODE_ENV === 'production'){
                     'index.html' ));
   });
 }
+
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});
