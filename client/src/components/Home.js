@@ -93,13 +93,13 @@ export default function Home() {
         </h4>
         <p className="subtitle-text">
           To learn more about me and this project click{" "}
-          <Link to="/about">here</Link>
+          <Link to="/about" className="intext-link">here</Link>
         </p>
       </div>
       <WorldMap />
       {/* <div>listview of trips</div> */}
       <div className="poll-label">
-        <h5 className="poll-title">Poll</h5>
+        <h3 className="poll-title">Poll</h3>
         <p>
           Visitor Recommendations<br></br>
           Where would you recommend travelling to?
@@ -111,9 +111,9 @@ export default function Home() {
             onChange={handleFormChange}
             name="countryVote"
           >
-            <option value={vote.countryVote}>{vote.countryVote}</option>
+            <option className="form-option" value={vote.countryVote}>{vote.countryVote}</option>
             {countriesList.map((name) => (
-              <option value={name}>{name}</option>
+              <option className="form-option" value={name}>{name}</option>
             ))}
           </select>
           <input type="submit" value="Vote"/>
