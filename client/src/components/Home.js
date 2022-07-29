@@ -86,7 +86,7 @@ export default function Home() {
 
 
   return (
-    <div>
+    <div >
       <div className="intro-container">
         <h4 className="subtitle">
           Welcome to a catalogue of my travels and whereabouts
