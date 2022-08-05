@@ -8,15 +8,16 @@ class WorldMap extends Component {
     super(props);
 
     this.state = {
+      width : window.innerWidth
     };
   }
 
   componentDidMount() {
-    let travelDataObj = {}
+    // let travelDataObj = {}
 
       fetch("https://adventures-with-daniel.herokuapp.com/countries/")
             .then(res => res.json())
-            .then(data => this.setState({"countryArr" : data}, createMap))
+            .then(data => this.setState({...this.state, "countryArr" : data}, createMap))
 
     // let travelDataObj = {}
     // this.props.countryArr.forEach(country=>{
@@ -27,7 +28,7 @@ class WorldMap extends Component {
     //   }
     // })
 
-    // console.log("new render of component");
+    console.log("new render of component");
     function createMap () {
 
       let travelDataObj = {}
@@ -74,10 +75,21 @@ class WorldMap extends Component {
     console.log("render")
     // console.log(this.state)
 
-    window.addEventListener("resize", () => window.location.reload());
+    window.addEventListener("resize", () => {
+      if (window.innerWidth !== this.state.width){
+        this.setState({...this.state, width: window.innerWidth})
+        window.location.reload()
+      }
+    });
+
     // window.location.reload()
     return () => {
-      window.removeEventListener("resize", () => window.location.reload());
+      window.removeEventListener("resize", () => {
+        if (window.innerWidth !== this.state.width){
+          this.setState({...this.state, width: window.innerWidth})
+          window.location.reload()
+        }
+      })
     };
   }
 

@@ -23,6 +23,8 @@ export default function Home() {
   //         .then(data => setCountriesTraveled(data))
   //       }
 
+  console.log("new render of home")
+
   function getVotesData () {
 
       fetch("https://adventures-with-daniel.herokuapp.com/votes")
